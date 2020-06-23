@@ -1,21 +1,28 @@
-# data-science
+# Data Science ML and DE
 
-# Med Cabinet
+# Med Cabinet API
+
+This API accepts GET requests like so:
+
+MOCK_DATA = {"id": 420, 
+            "First Name": "John", 
+            "Last Name": "Doe", 
+            "Desired_Effects": "Creative,Uplifted,Tingly,Euphoric,Relaxed, 
+            Giggly"}
+
+and then uses the desired effects to predict the best cannabis strain using natural language processing, machine learning. The results are then sent via the API PUT as so:
+
+MOCK DATA = {"id": 420,
+             "First Name": 'John',
+             "Last_Name": "Doe",
+             "Desired_Effects": "Creative,Uplifted,Tingly,Euphoric,Relaxed, Giggly",
+             "Recommendation": "Pineapple-Super-Silver-Haze",
+             "Recommendation_Effects": "Happy,Euphoric,Energetic,Focused,Tingly"}
+
+The API can also PUT more data pertaining to the recommendation including type, rating, flavor, description, and this is the MVP.
 
 
-# StrainAPItoPG.py
-
-Pulls approximately 24,393 rows of medical cannabis data from Strain API including:
-
-id, name, race, effect ... as column headers.
-
-The remainder of the code includes creating a connection to a Postgres Database hosted on ElephantSQL and storing the pulled Strain API data there, for analysis by DS in conjuncture with front end "form data" from the user that is submitted to the DS API for analysis, aka modeling and strain recommendation.
-
-
-# StrainAPI.csv
-
-CSV file from StrainAPI data in Postgres DB.
-
+# Data
 
 
 # Leafly.csv
@@ -25,16 +32,31 @@ Leafly data from Kaggle
 
 
 
+# Pickles
+
+# nn.pkl
+
+Nearest Neighbor trained model and pickled to make predictions in a virtual environment.
+
+# tfidf.pkl
+
+Vectorizer model to vectorize the words in the data so the the Nearest Neighbor model can make better predictions.
+=======
+
 # Leafly_nolistcommas.csv
 
-Leafly data wrangled with no list and commas in effects column
 
 
-# Leafly_csv_wrangle.py
+# web_app
 
-First wrangle on the Leafly "Leafly.csv" data to discover 13 useful unique "effects" values for Front End user survey for relaying user input via app/API to the final pickled ML model for predictions, which are to be POSTed and stored in the BE PG DB.
+# __init__.py
 
-Second wrangle is to strip "[]"" from list of Effects in Effects column values and replace "," with " " while also turning the list into a pandas.core.series in attempt for better neural networking fit. Output as Leafly_nolistcommas.csv
+Initializes the Flask App
+
+# Recommend.py
+
+
+Where the data, pickles, and recommend function come together to make NLP predictions for the API.
 
 
 # leafly_csv_wrangle.py
@@ -45,5 +67,7 @@ Wrangling the Leafly "cannabis.csv" data to discover 13 useful unique "effects" 
 
 # processing_data.ipynb
 
-Processing Leafly data (cannabis.csv) to perform baseline model. "#to be pickled.... #nn, dtm, tfidf"
 
+# Flask API
+
+GET user input data for making predictions, and PUT results and recommendations to the database.
