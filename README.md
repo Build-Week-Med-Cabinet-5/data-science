@@ -24,9 +24,12 @@ The API can also PUT more data pertaining to the recommendation including type, 
 
 # Data
 
+
 # Leafly.csv
 
+
 Leafly data from Kaggle
+
 
 
 # Pickles
@@ -38,6 +41,10 @@ Nearest Neighbor trained model and pickled to make predictions in a virtual envi
 # tfidf.pkl
 
 Vectorizer model to vectorize the words in the data so the the Nearest Neighbor model can make better predictions.
+=======
+
+# Leafly_nolistcommas.csv
+
 
 
 # web_app
@@ -48,7 +55,18 @@ Initializes the Flask App
 
 # Recommend.py
 
+
 Where the data, pickles, and recommend function come together to make NLP predictions for the API.
+
+
+# leafly_csv_wrangle.py
+
+Wrangling the Leafly "cannabis.csv" data to discover 13 useful unique "effects" values for ML training and Front End user survey for relaying user input via app/API to the final pickled ML model for predictions.
+
+
+
+# processing_data.ipynb
+
 
 # Flask API
 
