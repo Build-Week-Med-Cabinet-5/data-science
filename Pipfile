@@ -7,11 +7,11 @@ verify_ssl = true
 
 [packages]
 pandas = "*"
+scikit-learn = "*"
 requests = "*"
 pickle-mixin = "*"
-Flask = "*"
-Flask-RESTful = "*"
 gunicorn = "*"
+Flask = "*"
 
 [requires]
 python_version = "3.7"

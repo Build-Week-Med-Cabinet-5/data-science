@@ -1,8 +1,8 @@
-# test_Flask_API.py
+# GET_PUT_API.py
 
-# This is the test version of the API, it can both GET JSON and POST data 
+# This is the test version of the API, it can both GET and POST JSON data 
 
-# The NLP model is imported as the recommend function. Run the model, and test sending results
+# An NLP model is imported as the recommend function. Recommend strains and sends results
 
 
 
@@ -10,22 +10,31 @@
 
 import pandas as pd
 import requests
-from flask import Flask, Blueprint, json, request, jsonify
-from flask_restful import Api
-from Recommend import recommend
+import json
+from flask import Blueprint, request, jsonify, render_template
+from web_app.Recommend import recommend
 
 
-Flask_API = Blueprint("Flask_API", __name__)
+GET_PUT_API = Blueprint("GET_PUT_API", __name__)
 
 
-## Flask API
-#
+# Flask API
+
 #app = Flask(__name__)
 #api = Api(app)
 
 
-@app.route('/predict', methods=['GET', 'PUT'])
-def get_predict_post():
+# A welcome message to app
+
+@GET_PUT_API.route('/')
+def index():
+    return render_template("index.html", message = "DS Med Cabinet API using natural language processing to recommend the best cannabis strains to Med Cabinet members.")
+
+
+# GET_PUT_API get_predict_put
+
+@GET_PUT_API.route('/predict', methods=['GET', 'PUT'])
+def get_predict_put():
 
     # GET JSON User Data
 
@@ -50,11 +59,8 @@ def get_predict_post():
 
         return results
         
-        # Insomnia Test
-        #return get_data # This works, got the JSON from insomnia
-        
 
-    # POST JSON User Data and Recommendation
+    # PUT JSON User Data and Recommendation
 
     elif request.method=='PUT':
 
@@ -72,19 +78,13 @@ def get_predict_post():
         
         return reccommendation
 
-        # Insomnia Test
-        #return {"id": 420"
-        #        "First Name": 'John',   # This works
-        #        "Last_Name": "Doe",
-        #        "Recommendation": 'results'}
-
 
     else:
-        return("Ok, waiting.")
+        return ("Ok, waiting.")
 
 
 # Run API
 
 #if __name__ == '__main__':
-#    app.run(debug=True)
-#    #app.run()
+    #app.run(debug=True)
+    #app.run()

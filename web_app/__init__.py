@@ -1,16 +1,20 @@
-#__init__.py
+# __init__.py
 
 
+
+# Imports
 
 from flask import Flask
-from Flask_API import Flask_API
+from web_app.routes.GET_PUT_API import GET_PUT_API
 
+
+# Create Flask app
 
 def create_app():
     
     app = Flask(__name__)
-    
-    app.register_blueprint(Flask_API)
+
+    app.register_blueprint(GET_PUT_API)
 
     return app
 
