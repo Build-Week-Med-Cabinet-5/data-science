@@ -72,4 +72,4 @@ def recommend(user_input):
         #return strain + typ + rating + effects + flavor + description
 
 
-recommend("Happy,Relaxed,Uplifted,Focused,Aroused")
+recommend("Relaxed,Happy,Hungry,Euphoric,Creative")
