@@ -1,15 +1,24 @@
 '''
 Code here was build from this article:
 https://medium.com/@kellylougheed/make-a-flask-app-with-a-csv-as-a-flat-file-database-373632a2fba4
+
+Command line code to run: FLASK_APP=exp.py flask run 
 '''
 
 import csv
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template
+
 
 APP = Flask(__name__)
 
+# route to display dictionary list
 @APP.route("/")
 def row():
+    '''
+    For loops the cannabis.csv file appending each row to a list.
+    Does not include the first line, since that is our headers in the csv file.
+    Returning that list.
+    '''
     with open('cannabis.csv') as csv_file:
         data = csv.reader(csv_file, delimiter=',')
         first_line = True
@@ -28,9 +37,14 @@ def row():
                 first_line = False
     return str(strains)
 
-
+# route to display dictionary list via template
 @APP.route("/pretty")
 def index():
+    '''
+    For loops the cannabis.csv file appending each row to a list.
+    Does not include the first line, since that is our headers in the csv file.
+    Returning the list via a template.
+    '''
     with open('cannabis.csv') as csv_file:
         data = csv.reader(csv_file, delimiter=',')
         first_line = True
@@ -49,9 +63,14 @@ def index():
                 first_line = False
     return render_template("base.html", strains=strains)
 
-
+# route to display single dictionary list item as JSON object
 @APP.route('/<strain>')
 def strain_url(strain):
+    '''
+    Parameters: name of strain from database as a string.
+    For loops the cannabis.csv file, creating a dictionary.
+    Returning only the strain that was given as a parameter.
+    '''
     with open('cannabis.csv') as csv_file:
         data = csv.reader(csv_file, delimiter=',')
         dict_strain = {}
@@ -68,9 +87,14 @@ def strain_url(strain):
                 break
     return dict_strain
 
-
+# route to display single dictionary list item via template
 @APP.route("/<strain>/pretty")
 def pretty_url(strain):
+    '''
+    Parameters: name of strain from database as a string.
+    For loops the cannabis.csv file appending each row to a list.
+    Returning only the strain that was given as a parameter.
+    '''
     with open('cannabis.csv') as csv_file:
         data = csv.reader(csv_file, delimiter=',')
         strains = []
@@ -86,9 +110,3 @@ def pretty_url(strain):
                 })
                 break
     return render_template("base.html", strains=strains)
-
-
-
-
-# command line code
-#  FLASK_APP=exp.py flask run
