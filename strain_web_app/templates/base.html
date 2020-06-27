@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The Medicine Cabinet</title>
+    </head>
+    <body>
+        <h1>The Medicine Cabinet</h1>
+        {% for strain in strains %}
+        <h2>{{ strain.strain }}</h2>
+        <p>Type of strain: {{ strain.type }}</p>
+        <p>Current Rating: {{ strain.rating }}</p>
+        <p>Known Effects: {{ strain.effects }}</p>
+        <p>Known Flavor Profile: {{ strain.flavor }}</p>
+        <p>Description: {{ strain.description }}</p>
+        {% endfor %}    
+    </body>
+</html>
