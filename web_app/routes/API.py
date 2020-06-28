@@ -1,4 +1,4 @@
-# API.py
+# POST_PUT_API.py
 
 # This is the test version of the API, it can both POST and PUT JSON data 
 
@@ -20,14 +20,14 @@ from web_app.Recommend import recommend
 API = Blueprint("API", __name__)
 
 
-# API template
+# POST_PUT_API template
 
 @API.route('/predict', methods=['POST', 'PUT'])
 #def template():
-#    return render_template("predict.html", message = "DS Med Cabinet API, using natural language processing to recommend the best cannabis strains to Med Cabinet members.")
+#    return render_template("predict.html", message = "DS Med Cabinet API using natural language processing to recommend the best cannabis strains to Med Cabinet members.")
 
 
-# API post_predict_put
+# POST_PUT_API post_predict_put
 
 def post_predict_put():
 
@@ -69,11 +69,11 @@ def post_predict_put():
 
         # Recommendation
 
-        reccommendation = json.dumps(put_data) #(post_data, indent=2, separators=(', ', ': '))
+        reccommendation = put_data #(put_data, indent=2, separators=(', ', ': '))
         
         return jsonify(reccommendation)
 
 
     else:
 
-        return render_template("predict.html", message = "DS Med Cabinet API, using natural language processing to recommend the best cannabis strains to Med Cabinet members.")
+        return render_template("predict.html", message = "DS Med Cabinet Recommendation API, using natural language processing to recommend the best cannabis strains to Med Cabinet members.")
