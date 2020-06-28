@@ -3,6 +3,7 @@
 # Strain recommend function using k nearest neighbors and tfidf vectorizer train on strain Effects.
 
 
+
 # Imports
 
 from os import path
@@ -55,6 +56,8 @@ def recommend(user_input):
         flavor = json.dumps(info_flavor)
         description = json.dumps(info_description)
 
+        # Possible outputs
+
         #print(strain)
         #print(typ)
         #print(rating)
@@ -69,7 +72,11 @@ def recommend(user_input):
         #return effects
         #return flavor
         #return description
+
+        #return strain
+        
         #return strain + typ + rating + effects + flavor + description
 
+# Example of recommend on desired effects
 
-recommend("Relaxed,Happy,Hungry,Euphoric,Creative")
+recommend("Happy,Relaxed,Uplifted,Focused,Aroused")
